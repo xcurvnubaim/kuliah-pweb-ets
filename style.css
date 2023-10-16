@@ -12,6 +12,11 @@
   .container-card {
     grid-template-columns: repeat(4, 1fr);
   }
+
+  .card {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }
 
 /* Media query for screens smaller than 576px */
