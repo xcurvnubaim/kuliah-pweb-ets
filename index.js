@@ -1,9 +1,13 @@
-const endpoint = "http://10.199.13.243:81/currency.json";
+const apikey = "3ee174543fc9524dcfc24ed884c07ecb"
+const endpoint = `http://apilayer.net/api/live?access_key=${apikey}&pairs=EURUSD,EURGBP,GBPUSD,USDJPY,AUDUSD,USDCHF,NZDUSD,USDCAD,USDZAR`;
 
-const getData = async (str) => {
-    const res = await fetch(endpoint, {mode:'no-cors'});
+const getData = async () => {
+    const res = await fetch(endpoint);
     const data = await res.json();
-    return data.rates[str]; 
+    const rate = data.quotes;
+    const input = ["EURUSD","EURGBP", "GBPUSD", "USDJPY","USDCHF", "USDCAD", "USDZAR","AUDUSD","NZDUSD"];
+    input.map((curr)=>{
+        document.getElementById(curr).innerText = rate[curr];
+    })
 }
-
-console.log(getData("EURUSD"));
+getData();
